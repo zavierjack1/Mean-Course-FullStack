@@ -33,3 +33,5 @@ services:
       - backend
 volumes: 
   mongodb_data:
+networks: 
+  backend:
