@@ -4,13 +4,15 @@ services:
     image: zavierjack1/mean_course_angular:latest
     ports:
       - "8085:8080"
-    command: ng serve --host 0.0.0.0 --port 8080 -c local
+    command: ng serve --host 0.0.0.0 --port 8080 --configuration local
   my_express:
     depends_on: 
       - my_mongo
     image: zavierjack1/mean_course_express:latest
     ports:
       - "8080:8080"
+    networks:
+      - backend
   my_mongo: 
     image: zavierjack1/mean_course_mongo:latest
     ports: 
@@ -21,3 +23,11 @@ services:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
       MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
+    volumes: 
+      - mongodb_data:/data/db
+    networks:
+      - backend
+volumes: 
+  mongodb_data:
+networks: 
+  backend:
