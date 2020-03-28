@@ -7,7 +7,7 @@ services:
     command: ng serve --host 0.0.0.0 --port 8080 --configuration dynamic
     volumes: 
       - ../AngularApp:/AngularApp
-      - Angular/environment.dynamic.ts:/AngularApp/src/app/environments/environment.dynamic.ts
+      - ./Angular/environment.dynamic.ts:/AngularApp/src/app/environments/environment.dynamic.ts
   my_express:
     depends_on: 
       - my_mongo
