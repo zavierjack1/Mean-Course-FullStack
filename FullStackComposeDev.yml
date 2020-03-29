@@ -6,7 +6,7 @@ services:
       - "8085:8080"
     command: ng serve --host 0.0.0.0 --port 8080 --optimization=true --configuration development
     volumes: 
-      - ../AngularApp:/AngularApp
+      - ../Mean-Course-AngularJS:/AngularApp
       - ./Angular/environment.development.ts:/AngularApp/src/app/environments/environment.development.ts
   my_express:
     depends_on: 
