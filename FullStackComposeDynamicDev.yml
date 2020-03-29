@@ -4,9 +4,9 @@ services:
     image: zavierjack1/mean_course_angular:latest
     ports:
       - "8085:8080"
-    command: ng serve --host 0.0.0.0 --port 8080 --configuration dynamic
+    command: ng serve --host 0.0.0.0 --port 8080 --optimization=true --configuration dynamic
     volumes: 
-      - ../AngularApp:/AngularApp
+      - ../Mean-Course-AngularJS:/AngularApp
       - ./Angular/environment.dynamic.ts:/AngularApp/src/app/environments/environment.dynamic.ts
   my_express:
     depends_on: 
