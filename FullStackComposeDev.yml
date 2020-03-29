@@ -18,6 +18,7 @@ services:
     working_dir: /NodeJS-Express
     volumes: 
       - ../NodeJS-Express:/NodeJS-Express
+      - ./Node/.env:/NodeJS-Express/.env
     networks:
       - backend
   my_mongo: 
