@@ -1,0 +1,40 @@
+version: "3"
+services:
+  my_angular:
+    image: zavierjack1/angular:latest
+    ports:
+      - "8085:8080"
+    working_dir: /AngularApp
+    command: ng serve --host 0.0.0.0 --port 8080 --optimization=true --configuration development
+    volumes: 
+      - ../Mean-Course-AngularJS:/AngularApp
+      - ./Angular/environment.development.ts:/AngularApp/src/app/environments/environment.development.ts
+  my_express:
+    depends_on: 
+      - my_mongo
+    image: zavierjack1/express:latest
+    ports:
+      - "8080:8080"
+    working_dir: /NodeJS-Express
+    volumes: 
+      - ../NodeJS-Express:/NodeJS-Express
+    networks:
+      - backend
+  my_mongo: 
+    image: zavierjack1/mean_course_mongo:latest
+    ports: 
+      - "27020:27017"
+    env_file:
+      - .env
+    environment: 
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+      MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
+    volumes: 
+      - mongodb_data:/data/db
+    networks:
+      - backend
+volumes: 
+  mongodb_data:
+networks: 
+  backend:

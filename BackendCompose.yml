@@ -1,0 +1,30 @@
+version: "3"
+services:
+  my_express:
+    depends_on: 
+      - my_mongo
+    image: zavierjack1/minigram_node_express:latest 
+    ports:
+      - "8080:8080"
+    networks:
+      - backend
+    volumes: 
+      - ./Node/.env:/NodeJS-Express/.env
+  my_mongo: 
+    image: zavierjack1/mean_course_mongo:latest
+    ports: 
+      - "27020:27017"
+    env_file:
+      - .env
+    environment: 
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+      MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
+    volumes: 
+      - mongodb_data:/data/db
+    networks:
+      - backend
+volumes: 
+  mongodb_data:
+networks: 
+  backend:
