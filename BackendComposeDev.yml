@@ -9,6 +9,7 @@ services:
     working_dir: /NodeJS-Express
     volumes: 
       - ../NodeJS-Express:/NodeJS-Express
+      - ./Node/.env:/NodeJS-Express/.env 
     networks:
       - backend
   my_mongo: 
@@ -16,7 +17,7 @@ services:
     ports: 
       - "27020:27017"
     env_file:
-      - ./Mongo/.env
+      - .env
     environment: 
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
