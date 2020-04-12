@@ -7,7 +7,7 @@ services:
     working_dir: /AngularApp
     command: ng serve --host 0.0.0.0 --port 8080 --optimization=true --configuration development
     volumes: 
-      - ../Mean-Course-AngularJS:/AngularApp
+      - ../AngularApp:/AngularApp
       - ./Angular/environment.development.ts:/AngularApp/src/app/environments/environment.development.ts
   my_express:
     depends_on: 
@@ -26,7 +26,7 @@ services:
     ports: 
       - "27020:27017"
     env_file:
-      - .env
+      - ./Mongo/.env
     environment: 
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
