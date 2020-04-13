@@ -15,7 +15,7 @@ services:
   my_mongo: 
     image: zavierjack1/mean_course_mongo:latest
     ports: 
-      - "27020:27017"
+      - "8081:27017"
     env_file:
       - .env
     environment: 
