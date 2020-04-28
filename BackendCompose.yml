@@ -5,7 +5,7 @@ services:
       - my_mongo
     image: zavierjack1/minigram_node_express:latest 
     ports:
-      - "8080:8080"
+      - "80:8080"
     networks:
       - backend
     volumes: 
