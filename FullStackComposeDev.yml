@@ -19,6 +19,7 @@ services:
     volumes: 
       - ../NodeJS-Express:/NodeJS-Express
       - ./Node/.env:/NodeJS-Express/.env 
+      - node_images:/Node-JS-Express/images
     networks:
       - backend
   my_mongo: 
@@ -37,5 +38,6 @@ services:
       - backend
 volumes: 
   mongodb_data:
+  node_images:
 networks: 
   backend:

@@ -10,6 +10,7 @@ services:
       - backend
     volumes: 
       - ./Node/.env:/NodeJS-Express/.env
+      - node_images:/Node-JS-Express/images
   my_mongo: 
     image: zavierjack1/mean_course_mongo:latest
     ports: 
@@ -25,6 +26,7 @@ services:
     networks:
       - backend
 volumes: 
+  node_images:
   mongodb_data:
 networks: 
   backend:
